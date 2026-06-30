@@ -4,8 +4,16 @@
 class Plant:
     def __init__(self, name: str, height: float, age_days: int) -> None:
         self.name = name
-        self._height = height
-        self._age_days = age_days
+        if height < 0:
+            print(f"{self.name}: Error, height can't be negative")
+            self._height = 0.0
+        else:
+            self._height = height
+        if age_days < 0:
+            print(f"{self.name}: Error, age can't be negative")
+            self._age_days = 0
+        else:
+            self._age_days = age_days
 
     def get_height(self) -> float:
         return self._height

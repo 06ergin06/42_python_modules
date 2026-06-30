@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 class Plant:
-    def __init__(self, name: str, height: float, age: int) -> None:
+    def __init__(self, name: str, height: float, age_days: int) -> None:
         self.name = name
         self.height = height
-        self.age_days = age
+        self.age_days = age_days
 
     def grow(self, growth_rate: float = 0.8) -> None:
         self.height += growth_rate

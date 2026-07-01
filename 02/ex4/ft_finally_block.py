@@ -6,7 +6,7 @@ class PlantError(Exception):
 
 
 def water_plant(plant_name: str) -> None:
-    if not plant_name[0].isupper():
+    if plant_name != plant_name.capitalize():
         raise PlantError(f"Invalid plant name to water: '{plant_name}'")
     print(f"Watering {plant_name}: [OK]")
 
@@ -34,6 +34,7 @@ def test_watering_system() -> None:
     except PlantError as e:
         print(f"Caught PlantError: {e}")
         print(".. ending tests and returning to main")
+        return
     finally:
         print("Closing watering system\n")
         print("Cleanup always happens, even with errors!")

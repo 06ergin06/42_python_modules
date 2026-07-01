@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 
 def garden_operations(operation_number: int) -> None:
-    if operation_number == 0:
-        _ = int("abc")
-    elif operation_number == 1:
-        _ = 1 / 0
-    elif operation_number == 2:
-        open("/non/existent/file")
-    elif operation_number == 3:
-        _ = "abc" + 2
-    else:
-        return
+    match operation_number:
+        case 0:
+            _ = int("abc")
+        case 1:
+            _ = 1 / 0
+        case 2:
+            open("/non/existent/file")
+        case 3:
+            _ = "abc" + 2
+        case _:
+            return
+
 
 def test_error_types() -> None:
     print("=== Garden Error Types Demo ===")

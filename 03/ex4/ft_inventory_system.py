@@ -42,16 +42,16 @@ def main() -> None:
         percentage = (inventory[key] / sum_inv) * 100
         print(f"Item {key} represents {percentage:.1f}%")
 
-    most: str = item_list[0]
-    least: str = item_list[0]
-
-    for key in item_list:
-        if inventory[key] > inventory[most]:
-            most = key
-        if inventory[key] < inventory[least]:
-            least = key
-    print(f"Item most abundant: {most} with quantity {inventory[most]}")
-    print(f"Item least abundant: {least} with quantity {inventory[least]}")
+    if item_list:
+        most: str = item_list[0]
+        least: str = item_list[0]
+        for key in item_list:
+            if inventory[key] > inventory[most]:
+                most = key
+            if inventory[key] < inventory[least]:
+                least = key
+        print(f"Item most abundant: {most} with quantity {inventory[most]}")
+        print(f"Item least abundant: {least} with quantity {inventory[least]}")
     inventory.update({"magic_item": 1})
     print(f"Updated inventory: {inventory}")
 

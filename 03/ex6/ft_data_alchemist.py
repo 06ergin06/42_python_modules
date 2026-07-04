@@ -25,7 +25,7 @@ def main() -> None:
     }
     print(f"Score dict: {score_dict}")
     avg_score: float = round(sum(score_dict.values()) / len(score_dict), 2)
-    print(f"Score average is {avg_score:.2f}")
+    print(f"Score average is {avg_score}")
     high_scores: dict[str, int] = {
         name: score for name, score in score_dict.items() if score > avg_score
     }

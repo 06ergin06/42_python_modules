@@ -15,8 +15,8 @@ def main() -> None:
     print("Get a second set of coordinates")
     t2: tuple[float, float, float] = get_player_pos()
     x2, y2, z2 = t2
-    distance2: float = round(math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2), 4)
-    print(f"Distance between the 2 sets of coordinates: {distance2}")
+    distance2: float = math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
+    print(f"Distance between the 2 sets of coordinates: {round(distance2, 4)}")
 
 
 def get_player_pos() -> tuple[float, float, float]:

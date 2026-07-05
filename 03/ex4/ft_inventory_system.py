@@ -39,7 +39,7 @@ def main() -> None:
 
     item_list: list[str] = list(inventory.keys())
     for key in item_list:
-        percentage = round((inventory[key] / sum_inv) * 100, 1)
+        percentage: float = round((inventory[key] / sum_inv) * 100, 1)
         print(f"Item {key} represents {percentage}%")
 
     if item_list:

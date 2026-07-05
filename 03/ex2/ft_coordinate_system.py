@@ -10,13 +10,13 @@ def main() -> None:
     print(f"Got a first tuple: {t1}")
     x1, y1, z1 = t1
     print(f"It includes: X={x1}, Y={y1}, Z={z1}")
-    distance1 = math.sqrt(x1**2 + y1**2 + z1**2)
-    print(f"Distance to center: {round(distance1, 4)}\n")
+    distance1 = round(math.sqrt(x1**2 + y1**2 + z1**2), 4)
+    print(f"Distance to center: {distance1}\n")
     print("Get a second set of coordinates")
     t2: tuple[float, float, float] = get_player_pos()
     x2, y2, z2 = t2
-    distance2 = math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
-    print(f"Distance between the 2 sets of coordinates: {round(distance2, 4)}")
+    distance2 = round(math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2), 4)
+    print(f"Distance between the 2 sets of coordinates: {distance2}")
 
 
 def get_player_pos() -> tuple[float, float, float]:

@@ -39,8 +39,8 @@ def main() -> None:
 
     item_list: list[str] = list(inventory.keys())
     for key in item_list:
-        percentage = (inventory[key] / sum_inv) * 100
-        print(f"Item {key} represents {percentage:.1f}%")
+        percentage = round((inventory[key] / sum_inv) * 100, 1)
+        print(f"Item {key} represents {percentage}%")
 
     if item_list:
         most: str = item_list[0]

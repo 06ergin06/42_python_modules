@@ -5,7 +5,12 @@ from typing import Generator
 
 
 def gen_event() -> Generator[tuple[str, str], None, None]:
-    players: list[str] = ["alice", "bob", "charlie", "dylan"]
+    players: list[str] = [
+        "alice",
+        "bob",
+        "charlie",
+        "dylan"
+    ]
     actions: list[str] = [
         "run",
         "eat",

@@ -6,7 +6,7 @@ import typing
 
 def main() -> None:
     if len(sys.argv) != 2:
-        print("Usage: ft_archive_creation.py <file>")
+        print("Usage: ft_stream_management.py <file>")
         return
     print("=== Cyber Archives Recovery & Preservation ===")
     file_name: str = sys.argv[1]
@@ -20,7 +20,10 @@ def main() -> None:
         file.close()
         print(f"File '{file_name}' closed.")
     except (FileNotFoundError, PermissionError) as e:
-        print(f"Error opening file '{file_name}': {e}")
+        print(
+            f"[STDERR] Error opening file '{file_name}': {e}",
+            file=sys.stderr
+        )
         return
 
     print("Transform data:")
@@ -31,18 +34,24 @@ def main() -> None:
     print(content_arc, end="")
     print("---")
 
-    new_file_name: str = input("Enter new file name (or empty): ")
-    if new_file_name == "":
+    print("Enter new file name (or empty): ", end="")
+    sys.stdout.flush()
+    n_file_name: str = sys.stdin.readline().strip('\n')
+    if n_file_name == "":
         print("Not saving data.")
     else:
-        print(f"Saving data to '{new_file_name}'")
+        print(f"Saving data to '{n_file_name}'")
         try:
-            output: typing.IO[str] = open(new_file_name, "w")
+            output: typing.IO[str] = open(n_file_name, "w")
             output.write(content_arc)
             output.close()
-            print(f"Data saved in file '{new_file_name}'.")
+            print(f"Data saved in file '{n_file_name}'.")
         except (FileNotFoundError, PermissionError) as e:
-            print(f"Error opening file '{new_file_name}': {e}")
+            print(
+                f"[STDERR] Error opening file '{n_file_name}': {e}",
+                file=sys.stderr
+            )
+            print("Data not saved.")
 
 
 if __name__ == "__main__":

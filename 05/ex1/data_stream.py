@@ -26,13 +26,12 @@ class DataProcessor(abc.ABC):
 
 class NumericProcessor(DataProcessor):
     def validate(self, data: typing.Any) -> bool:
+        if not data:
+            return False
         if isinstance(data, (int, float)):
             return True
         if isinstance(data, list):
-            for item in data:
-                if not isinstance(item, (int, float)):
-                    return False
-            return True
+            return all(isinstance(item, (int, float)) for item in data)
         return False
 
     def ingest(self, data: int | float | list[int | float]) -> None:
@@ -71,40 +70,39 @@ class TextProcessor(DataProcessor):
 
 
 class LogProcessor(DataProcessor):
+    def _is_valid_log_entry(self, item: typing.Any) -> bool:
+        if not isinstance(item, dict):
+            return False
+        for k, v in item.items():
+            if not (isinstance(k, str) and isinstance(v, str)):
+                return False
+        return True
+
     def validate(self, data: typing.Any) -> bool:
+        if not data:
+            return False
         if isinstance(data, dict):
-            return True
+            return self._is_valid_log_entry(data)
         if isinstance(data, list):
-            for item in data:
-                if not isinstance(item, dict):
-                    return False
-                for k, v in item.items():
-                    if not (isinstance(k, str) and isinstance(v, str)):
-                        return False
-            return True
+            return all(self._is_valid_log_entry(item) for item in data)
         return False
+
+    def _format_log(self, item: dict[str, str]) -> str:
+        if "log_level" in item:
+            return (
+                f"{item.get('log_level', '')}:"
+                f" {item.get('log_message', '')}"
+            )
+        return str(item)
 
     def ingest(self, data: dict[str, str] | list[dict[str, str]]) -> None:
         if not self.validate(data):
             raise ValueError("Improper log data")
-        if isinstance(data, list):
-            for item in data:
-                if "log_level" in item:
-                    level = item.get("log_level", "")
-                    msg = item.get("log_message", "")
-                    log_str = f"{level}: {msg}"
-                else:
-                    log_str = str(item)
-
-                self._storage.append((self._rank_counter, log_str))
-                self._rank_counter += 1
-        else:
-            if "log_level" in data:
-                level = data.get("log_level", "")
-                msg = data.get("log_message", "")
-                log_str = f"{level}: {msg}"
-            else:
-                log_str = str(data)
+        items: list[dict[str, str]] = (
+            data if isinstance(data, list) else [data]
+        )
+        for item in items:
+            log_str: str = self._format_log(item)
             self._storage.append((self._rank_counter, log_str))
             self._rank_counter += 1
 
@@ -155,7 +153,7 @@ if __name__ == "__main__":
     print("\nRegistering Numeric Processor")
     num_pro: NumericProcessor = NumericProcessor()
     stream.register_processor(num_pro)
-    batch = [
+    batch: list[typing.Any] = [
             "Hello world",
             [3.14, 1, 2.71],
             [

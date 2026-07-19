@@ -7,14 +7,12 @@ import ex2
 
 
 def battle(
-    opponents: typing.List[typing.Tuple[
-        ex0.CreatureFactory, ex2.BattleStrategy
-    ]]
+    opponents: list[tuple[ex0.CreatureFactory, ex2.BattleStrategy]]
 ) -> None:
     print("*** Tournament ***")
     print(f"{len(opponents)} opponents involved")
 
-    fighters: typing.List[typing.Tuple[typing.Any, ex2.BattleStrategy]] = []
+    fighters: list[tuple[typing.Any, ex2.BattleStrategy]] = []
     for factory, strategy in opponents:
         fighters.append((factory.create_base(), strategy))
 

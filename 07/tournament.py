@@ -38,15 +38,14 @@ def battle(
 
 
 if __name__ == "__main__":
-    flame_factory = ex0.FlameFactory()
-    aqua_factory = ex0.AquaFactory()
-    healing_factory = ex1.HealingCreatureFactory()
-    transform_factory = ex1.TransformCreatureFactory()
+    flame_factory: typing.Any = ex0.FlameFactory()
+    aqua_factory: typing.Any = ex0.AquaFactory()
+    healing_factory: typing.Any = ex1.HealingCreatureFactory()
+    transform_factory: typing.Any = ex1.TransformCreatureFactory()
 
-    # Stratejiler[cite: 1]
-    normal_strat = ex2.NormalStrategy()
-    aggressive_strat = ex2.AggressiveStrategy()
-    defensive_strat = ex2.DefensiveStrategy()
+    normal_strat: typing.Any = ex2.NormalStrategy()
+    aggressive_strat: typing.Any = ex2.AggressiveStrategy()
+    defensive_strat: typing.Any = ex2.DefensiveStrategy()
 
     print("Tournament 0 (basic)")
     print("[(Flameling+Normal), (Healing+Defensive)]")

@@ -31,8 +31,8 @@ if __name__ == "__main__":
     print()
 
     print("Testing battle")
-    fighter1 = flame_factory.create_base()
-    fighter2 = aqua_factory.create_base()
+    fighter1: typing.Any = flame_factory.create_base()
+    fighter2: typing.Any = aqua_factory.create_base()
 
     print(fighter1.describe())
     print("vs.")

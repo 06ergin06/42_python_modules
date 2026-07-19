@@ -23,7 +23,7 @@ def battle(
             creature1, strat1 = fighters[i]
             creature2, strat2 = fighters[j]
 
-            print("* Battle *")
+            print("\n* Battle *")
             print(creature1.describe())
             print("vs.")
             print(creature2.describe())

@@ -6,6 +6,7 @@ from .strategies import (
     StrategyError
 )
 
+
 __all__ = [
     "BattleStrategy",
     "NormalStrategy",

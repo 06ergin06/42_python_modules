@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 import ex0
 import typing
 

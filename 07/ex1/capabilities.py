@@ -1,20 +1,20 @@
-from abc import ABC, abstractmethod
+import abc
 
 
-class HealCapability(ABC):
-    @abstractmethod
+class HealCapability(abc.ABC):
+    @abc.abstractmethod
     def heal(self, target: str = "itself") -> str:
         pass
 
 
-class TransformCapability(ABC):
+class TransformCapability(abc.ABC):
     def __init__(self) -> None:
         self._is_transformed = False
 
-    @abstractmethod
+    @abc.abstractmethod
     def transform(self) -> str:
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def revert(self) -> str:
         pass

@@ -1,12 +1,12 @@
-from abc import ABC, abstractmethod
+import abc
 
 
-class Creature(ABC):
+class Creature(abc.ABC):
     def __init__(self, name: str, creature_type: str) -> None:
         self._name = name
         self._type = creature_type
 
-    @abstractmethod
+    @abc.abstractmethod
     def attack(self) -> str:
         pass
 

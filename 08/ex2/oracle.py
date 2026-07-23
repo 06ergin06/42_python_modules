@@ -3,7 +3,12 @@
 
 import os
 import sys
-from dotenv import load_dotenv  # type: ignore
+try:
+    from dotenv import load_dotenv  # type: ignore
+except ImportError:
+    print("Error: The 'python-dotenv' module is missing.")
+    print("Please install it using: pip install -r requirements.txt")
+    sys.exit(1)
 
 
 if __name__ == "__main__":

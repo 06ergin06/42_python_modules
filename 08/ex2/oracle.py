@@ -4,7 +4,7 @@
 import os
 import sys
 try:
-    from dotenv import load_dotenv
+    from dotenv import load_dotenv  # type: ignore
 except ImportError:
     print("Error: The 'python-dotenv' module is missing.")
     print("Please install it using: pip install -r requirements.txt")

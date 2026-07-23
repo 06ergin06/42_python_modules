@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 
-import sys
-import importlib
-import importlib.metadata
+import sys  # type: ignore
+import importlib  # type: ignore
+import importlib.metadata  # type: ignore
 
 
 if __name__ == "__main__":

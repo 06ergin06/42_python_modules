@@ -3,6 +3,7 @@ name = "loading-programs"
 version = "0.1.0"
 description = "Matrix Data Analysis Tool"
 authors = ["İbrahim Hakkı Ergin <iergin@student.42istanbul.com.tr>"]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
